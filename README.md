@@ -1,28 +1,28 @@
-#Dockerの学習
-## Dockerfileを使った環境構築
+# Dockerの学習
+# Dockerfileを使った環境構築
 
 ## イメージの作成　コンテナの作成　ネットワークを作成
 
-# コンテナ同士を繋ぐネットワークを作成するコマンド
+## コンテナ同士を繋ぐネットワークを作成するコマンド
 $ docker network create [php-mysql-network:ネットワーク名]
 
-#　イメージを作成
+# イメージを作成
 $ docker build -t [php-app:イメージ名] [.:Dockerfileのパス]
 
-# コンテナを作成
+## コンテナを作成
 $ docker container run -d -p 8080:80 --name [run-php-app:コンテナ名] [php-app:元にするイメージ名]
 
-#変更を同期するためにマウント
+## 変更を同期するためにマウント
 $ docker container run -d -p 8080:80 -v "$(pwd)"[/src:/var/www/html:サーバーのドキュメントルート] --name s[run-php-app:コンテナ名] [php-app:元にするイメージ名]
 
 ## MYSQLコンテナの起動 イメージの作成も同じ方法で出来る
 
 
-#MYSQLコンテナを立ち上げる
+## MYSQLコンテナを立ち上げる
 $ docker container run -d --network [php-mysql-network:ネットワーク名] --rm --name [run-php-db:コンテナ名] [php-db: 元にするイメージ]
 
 
-# Docker コマンドオプション
+### Docker コマンドオプション
 
  [^1]: - d \ デタッチモードで起動
 
@@ -37,4 +37,4 @@ $ docker container run -d --network [php-mysql-network:ネットワーク名] --
  [^6]: --name [コンテナ名] [イメージ名] \ コンテナ名と元になるイメージを指定
 
 
-## Docker-compose.yamlを使った環境構築
+# Docker-compose.yamlを使った環境構築
